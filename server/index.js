@@ -5,7 +5,7 @@ const Keys = require("./config/Keys");
 
 const app = express();
 
-app.use(
+passport.use(
     
     new GoogleStrategy( 
         {
@@ -18,9 +18,7 @@ app.use(
             console.log(accessToken);
         }
     ),
-    () => {
-        console.info("test")
-    }, 
+
     
 );
 
@@ -36,7 +34,4 @@ app.get('/auth/google', passport.authenticate('google', {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, ()=> {
-    console.info("Server started")
-
-});
+app.listen(PORT);
